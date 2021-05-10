@@ -8,6 +8,10 @@ import (
 	"gobot.io/x/gobot/platforms/firmata"
 )
 
+type Sensors struct {
+	LedConnection int
+}
+
 func Connection() {
 	firmataAdaptor := firmata.NewAdaptor("/dev/ttyACM0")
 	led := gpio.NewLedDriver(firmataAdaptor, "13")
