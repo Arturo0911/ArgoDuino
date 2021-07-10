@@ -1,14 +1,13 @@
-
 # import serial
 
 
 from typing import Union
 from core.arduino.process import *
+from core.model.growth import *
 
-def main() -> Union[dict, list]:
-    
-    return ({1:"2"},[1,2])
-    # print(connection())
+
+def main():
+    reading_file("data/table_1.csv")
 
 
 if __name__ == "__main__":

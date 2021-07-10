@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 serial = "*"
 requests = "*"
+pandas = "*"
+numpy = "*"
+pyserial = "*"
 
 [dev-packages]
 
