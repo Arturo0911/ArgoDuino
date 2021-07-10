@@ -1,9 +1,9 @@
 
-from typing import Any, Iterable
+from typing import Any, Union
 from serial import Serial
 
 class Arduino:
-
+    """Arduino connection"""
     def __init__(self):
         self.port = "COM4"
         self.baudrate = 9600
@@ -15,7 +15,7 @@ class Arduino:
             baudrate = self.baudrate,
             timeout = self.timeout)
     
-    def read_lines(self, readers = 20) -> Iterable[dict, list]:
+    def read_lines(self, readers = 20) -> Union[dict, list]:
 
         conn = self._connection()
         stack_data = list()
