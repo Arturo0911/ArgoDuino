@@ -1,4 +1,4 @@
-from typing import Any, Union
+from typing import Any, Tuple, Dict
 from serial import Serial
 
 
@@ -7,16 +7,16 @@ class Arduino:
 
     def __init__(self):
         self.port = "COM4"
-        self.baudrate = 9600
+        self.baud_rate = 9600
         self.timeout = 2
 
     def _connection(self) -> Any:
         serial_conn = Serial(port=self.port,
-                                    baudrate=self.baudrate,
-                                    timeout=self.timeout)
+                             baudrate=self.baud_rate,
+                             timeout=self.timeout)
         return serial_conn
 
-    def read_lines(self, readers=20) -> Union[dict, list]:
+    def read_lines(self, readers=20) -> Tuple[Dict[int, Any], list]:
         conn = self._connection()
         stack_data = list()
         object_data = dict()
