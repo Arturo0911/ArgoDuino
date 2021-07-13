@@ -9,6 +9,7 @@ requests = "*"
 pandas = "*"
 numpy = "*"
 pyserial = "*"
+pynvim = "*"
 
 [dev-packages]
 
