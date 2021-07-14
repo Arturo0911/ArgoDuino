@@ -12,8 +12,8 @@ class Arduino:
 
     def _connection(self) -> Any:
         serial_conn = Serial(port=self.port,
-                             baudrate=self.baud_rate,
-                             timeout=self.timeout)
+            baudrate=self.baud_rate,
+            timeout=self.timeout)
         return serial_conn
 
     def read_lines(self, readers=20) -> Tuple[Dict[int, Any], list]:

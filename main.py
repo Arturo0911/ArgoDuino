@@ -9,7 +9,8 @@ from core.fermentation.fermentation import Fermentation
 def main():
     # reading_file("data/table_1.csv")
     #ferment = Fermentation(6.1, 0.00025,0.22226)
-    simulation_bacterial_growth([],[])
+    bacteria = BacteriaGrowth([],[])
+    bacteria.simulation_bacterial_growth()
 
 
 if __name__ == "__main__":
