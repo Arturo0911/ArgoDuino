@@ -1,11 +1,15 @@
 """Kinetic Growth"""
 
+import pandas as pd
+import os
 import numpy as np
-from typing import Any, Tuple, List
+from typing import Any, Tuple
 from math import (
     log2,
     log10
 )
+import csv
+import seaborn as sns
 
 """The goal is can be calculated the growth using CUF/ml
     Colony forming unit, this unit is used in microbiology 
@@ -13,11 +17,34 @@ from math import (
     in a sample. Viable is defined as the ability to multiply
     voa binary fission under the controlled conditions."""
 
+def growth_bacterial_chart(file_path: str):
+    bacterial_csv = pd.read_csv(file_path)
+    sns.scatterplot()
 
 def csv_make_simulation():
-    """
-    """
-    pass
+    
+    class CSVMaker:
+
+        def __init__(self) -> None:
+            self.dir_name = "yogurt_simulation"
+
+        def create_directories(self) -> None:
+            if not os.path.exists(self.dir_name):
+                os.makedirs(self.dir_name)
+            with open(self.dir_name+"/yogurt_dataset.csv", "w") as file:
+                writer = csv.writer(file)
+                writer.writerow(
+                    []
+                )
+            
+        def fill_directories(self, *args) -> None:
+            with open(self.dir_name+"/yogurt_dataset.csv", "a") as file:
+                writer = csv.writer(file)
+                writer.writerow(
+                    [args[0], args[1], args[2], args[3]]
+                )
+    
+    CSVMaker().create_directories()
 
 
 class BacteriaGrowth:
@@ -58,3 +85,4 @@ class BacteriaGrowth:
         """The concentration of both bacteria strains is essential to make 
             the growth properly."""
         pass
+    

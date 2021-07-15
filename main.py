@@ -1,6 +1,6 @@
 # import serial
-
-from core.model.growth import *
+from app import app
+"""from app.core.model.growth import *
 
 
 def main():
@@ -11,7 +11,9 @@ def main():
     print(lactose)
     print(strep)
     # bacteria.simulation_bacterial_growth()
-
+"""
+def main():
+    app.run(port = 5000, debug=True)
 
 if __name__ == "__main__":
     main()
