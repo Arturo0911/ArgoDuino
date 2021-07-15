@@ -1,27 +1,29 @@
 """Kinetic Growth"""
 
 import numpy as np
-from typing import Any, Union
-from random import (
-    uniform, 
-    randint
-)
+from typing import Any, Tuple, List
 from math import (
     log2,
     log10
 )
- 
+
 """The goal is can be calculated the growth using CUF/ml
     Colony forming unit, this unit is used in microbiology 
-    to stimate the number of viable bacteria or fungal cells 
+    to estimate the number of viable bacteria or fungal cells 
     in a sample. Viable is defined as the ability to multiply
     voa binary fission under the controlled conditions."""
 
 
+def csv_make_simulation():
+    """
+    """
+    pass
+
+
 class BacteriaGrowth:
-    
     """Kinetic bacteria growth"""
-    def __init__(self,lactobacillus: list, streptococcus: list, solution: float) -> None:
+
+    def __init__(self, lactobacillus: list, streptococcus: list, solution: float) -> None:
         """[summary]
 
         Args:
@@ -29,29 +31,30 @@ class BacteriaGrowth:
             streptococcus (list): [description]
             solution (float): [description]
         """
-        self.lact_bac = lactobacillus
+        self.lactic_bac = lactobacillus
         self.strep_bac = streptococcus
+        self.solution = solution
 
-    def show_concentration(self) -> Union[np.ndarray, np.ndarray]:
-        return np.array(self.lact_bac), np.array(self.strep_bac)
+    def show_concentration(self) -> Tuple[np.ndarray, np.ndarray]:
+        return np.array(self.lactic_bac), np.array(self.strep_bac)
 
-    def calculating_concentration(self, initial_number_individuals: float, final_number_individuals: float, time_incubation: float) -> Union[float, float]:
-        
+    @staticmethod
+    def calculating_concentration(initial_number_individuals: float, final_number_individuals: float,
+                                  time_incubation: float) -> Tuple[float, float]:
         """[summary]
             n = log((# final of entities / initial number of individuals ))
         Returns:
-            [type]: [description]
+            [numbers_generations]: [when we have a simple sample of bacterias in one environment, the generations are
+                calculated using the above formula]
+            [time_generations]: [ time that every father take to make generations]
         """
 
-        number_generations = log10(float(final_number_individuals/initial_number_individuals))/ log2(1)
+        number_generations = log10(float(final_number_individuals / initial_number_individuals)) / log2(1)
         time_generations = time_incubation / number_generations
 
         return number_generations, time_generations
-    
+
     def simulation_bacterial_growth(self) -> Any:
         """The concentration of both bacteria strains is essential to make 
-            the growth propertly."""
+            the growth properly."""
         pass
-
-
-
