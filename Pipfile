@@ -12,6 +12,7 @@ pyserial = "*"
 pynvim = "*"
 seaborn = "*"
 flask = "*"
+matplotlib = "*"
 
 [dev-packages]
 

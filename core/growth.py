@@ -10,6 +10,7 @@ from math import (
 )
 import csv
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 """The goal is can be calculated the growth using CUF/ml
     Colony forming unit, this unit is used in microbiology 
@@ -19,7 +20,8 @@ import seaborn as sns
 
 def growth_bacterial_chart(file_path: str):
     bacterial_csv = pd.read_csv(file_path)
-    sns.scatterplot()
+    sns.scatterplot(x = "time", y = "growth_log", data = bacterial_csv)
+    plt.show()
 
 def csv_make_simulation():
     
