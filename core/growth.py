@@ -66,6 +66,9 @@ class BacteriaGrowth:
 
     def show_concentration(self) -> Tuple[np.ndarray, np.ndarray]:
         return np.array(self.lactic_bac), np.array(self.strep_bac)
+    
+    def estimation_bacterial_concentration(self):
+        pass
 
     @staticmethod
     def calculating_concentration(initial_number_individuals: float, final_number_individuals: float,

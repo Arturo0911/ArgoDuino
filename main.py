@@ -1,6 +1,6 @@
 # import serial
 # from app import app
-from core.growth import *
+# from core.growth import *
 
 
 def main():
@@ -10,9 +10,9 @@ def main():
     lactose, strep = bacteria.show_concentration()
     print(lactose)
     print(strep)"""
-    bacteria = growth_bacterial_chart("data/growth_curve.csv")
+    # bacteria = growth_bacterial_chart("data/growth_curve.csv")
     # bacteria.simulation_bacterial_growth()
-
+    print("hi")
 """def main():
     app.run(port = 5000, debug=True)"""
 
