@@ -78,6 +78,11 @@ class BacteriaGrowth:
             [time_generations]: [ time that every father take to make generations]
         """
 
+        """There are two periods in th yogurt production: 
+            - Fermentation
+            - Postacidification
+        """
+
         number_generations = log10(float(final_number_individuals / initial_number_individuals)) / log2(1)
         time_generations = time_incubation / number_generations
 
