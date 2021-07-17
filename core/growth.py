@@ -18,13 +18,14 @@ import matplotlib.pyplot as plt
     in a sample. Viable is defined as the ability to multiply
     voa binary fission under the controlled conditions."""
 
+
 def growth_bacterial_chart(file_path: str):
     bacterial_csv = pd.read_csv(file_path)
-    sns.scatterplot(x = "time", y = "growth_log", data = bacterial_csv)
+    sns.scatterplot(x="time", y="growth_log", data=bacterial_csv)
     plt.show()
 
+
 def csv_make_simulation():
-    
     class CSVMaker:
 
         def __init__(self) -> None:
@@ -33,40 +34,40 @@ def csv_make_simulation():
         def create_directories(self) -> None:
             if not os.path.exists(self.dir_name):
                 os.makedirs(self.dir_name)
-            with open(self.dir_name+"/yogurt_dataset.csv", "w") as file:
+            with open(self.dir_name + "/yogurt_dataset.csv", "w") as file:
                 writer = csv.writer(file)
                 writer.writerow(
                     []
                 )
-            
+
         def fill_directories(self, *args) -> None:
-            with open(self.dir_name+"/yogurt_dataset.csv", "a") as file:
+            with open(self.dir_name + "/yogurt_dataset.csv", "a") as file:
                 writer = csv.writer(file)
                 writer.writerow(
                     [args[0], args[1], args[2], args[3]]
                 )
-    
+
     CSVMaker().create_directories()
 
 
 class BacteriaGrowth:
     """Kinetic bacteria growth"""
 
-    def __init__(self, lactobacillus: list, streptococcus: list, solution: float) -> None:
-        """[summary]
+    def __init__(self,colonies_number: float,
+                 lactobacillus: list, streptococcus: list,
+                 total_dilution_factor: float, solution: float,
+                 volume_culture_plate: float) -> None:
 
-        Args:
-            lactobacillus (list): [description]
-            streptococcus (list): [description]
-            solution (float): [description]
-        """
         self.lactic_bac = lactobacillus
         self.strep_bac = streptococcus
         self.solution = solution
+        self.colonies_number = colonies_number
+        self.total_dilution_factor = total_dilution_factor
+        self.volume_culture_plate = volume_culture_plate
 
     def show_concentration(self) -> Tuple[np.ndarray, np.ndarray]:
         return np.array(self.lactic_bac), np.array(self.strep_bac)
-    
+
     def estimation_bacterial_concentration(self):
         pass
 
@@ -83,7 +84,7 @@ class BacteriaGrowth:
 
         """There are two periods in th yogurt production: 
             - Fermentation
-            - Postacidification
+            - Post_acidification
         """
 
         number_generations = log10(float(final_number_individuals / initial_number_individuals)) / log2(1)
@@ -95,4 +96,7 @@ class BacteriaGrowth:
         """The concentration of both bacteria strains is essential to make 
             the growth properly."""
         pass
-    
+
+
+def create_csv_value():
+    pass
