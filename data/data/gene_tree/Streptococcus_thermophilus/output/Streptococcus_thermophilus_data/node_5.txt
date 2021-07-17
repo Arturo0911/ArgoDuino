@@ -1,0 +1,7 @@
+id: 1319075 - name: pdp_3
+id: 1318917 - name: Unknow
+id: 1319167 - name: adhA_1
+id: 1318836 - name: ctpF
+id: 1327095 - name: Unknow
+id: 1319030 - name: Unknow
+id: 1324361 - name: pyrD1-1

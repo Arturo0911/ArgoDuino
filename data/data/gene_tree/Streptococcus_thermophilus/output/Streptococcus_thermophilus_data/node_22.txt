@@ -1,0 +1,7 @@
+id: 1322157 - name: epsG
+id: 1318549 - name: Unknow
+id: 1318548 - name: Unknow
+id: 1322154 - name: epsJ
+id: 1322152 - name: epsL
+id: 1322153 - name: cpsK
+id: 1322158 - name: Unknow
