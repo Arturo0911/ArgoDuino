@@ -13,6 +13,38 @@ MILK_FAT = 0.15 # milk fat percent
 PROTEINS = 0.027 # m/m milk proteins
 ACIDITY = 0.006 # titratble acidity
 
+def init_process():
+
+    reading_file = pd.read_csv("data/milk_grading.csv")
+
+    ph_values = reading_file["pH"] # pH columng for analysis
+    temperature_values = reading_file["Temprature"] # variation temperature
+
+
+    """
+    Producing yogurt requires milk to acidify, wehereupon curs are
+    formed. This acidification process, which has to be rapid in
+    industrial settings, largegly depens on the growth and the activity
+    of bacteria that produce lactic acid by fermenting lactose. The
+    association between the two yogurt lactic acid bacteria (LAB)
+    Streptococcus Thermophilus and lactobacillus bulgarius is regarded
+    as a procooperation because it's befeicial for both species, but
+    each bacterium can grow alone in milk. Tis protocooperation has
+    industrial importance because it can improve yogurt¿s properties,
+    such as the texture, the acidification rate and the flavor.
+
+    """
+
+    dilusion_vases = 100 # in ml
+    cfu = 100000 # cfu/ml
+
+    # the inoculation was for 
+    incoluation = 0.01 # 1% percent
+
+    for x in range(10):
+        continue
+
+
 
 def presenting_bacteria_growth():
 
@@ -89,54 +121,20 @@ def making_growth_simulation():
 
 
 
-def init_process():
-
-    reading_file = pd.read_csv("data/milk_grading.csv")
-
-    ph_values = reading_file["pH"] # pH columng for analysis
-    temperature_values = reading_file["Temprature"] # variation temperature
-
-
-    """
-    Producing yogurt requires milk to acidify, wehereupon curs are
-    formed. This acidification process, which has to be rapid in
-    industrial settings, largegly depens on the growth and the activity
-    of bacteria that produce lactic acid by fermenting lactose. The
-    association between the two yogurt lactic acid bacteria (LAB)
-    Streptococcus Thermophilus and lactobacillus bulgarius is regarded
-    as a procooperation because it's befeicial for both species, but
-    each bacterium can grow alone in milk. Tis protocooperation has
-    industrial importance because it can improve yogurt¿s properties,
-    such as the texture, the acidification rate and the flavor.
-
-    """
-
-    dilusion_vases = 100 # in ml
-    cfu = 100000 # cfu/ml
-
-    # the inoculation was for 
-    incoluation = 0.01 # 1% percent
-
-    for x in range(10):
-        continue
+def evaluation_dataset():
+    data = pd.read_csv("data/growth_lact.csv")
+    
+    plt.figure(figsize = (12,7))
+    # sns.heatmap(strep.corr(method = "pearson"), annot = True, linewidths=.5)
+    sns.scatterplot(x= "pH_initial_", y = "ufc/ml", data = data)
+    plt.show()
+    # print(strep.describe())
 
 
 def main():
-    # init_process()
 
-    # bacteria = pd.read_csv("data/data_train.csv")
-    # lact_bac = bacteria[bacteria["Organisms"] == "37_lactobacillus_delbrueckii_bacteria"]
-    # stre_bac = bacteria[bacteria["Organisms"] == "38_streptococcus_thermophilus_bacteria"]
-
-    # lact_bac.reset_index(drop = True)
-    # stre_bac.reset_index(drop = True)
-
-    # bacteria_for_test = lact_bac.append(stre_bac, ignore_index = True)
-
-    # bacteria_for_test.to_csv("data/bacterias_growth_test.csv", index = False)
-
-
-
+    evaluation_dataset()
+    
 if __name__ == "__main__":
     main()
 
