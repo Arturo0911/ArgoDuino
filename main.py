@@ -14,7 +14,6 @@ PROTEINS = 0.027 # m/m milk proteins
 ACIDITY = 0.006 # titratble acidity
 
 
-
 def presenting_bacteria_growth():
 
     """bacteria = pd.read_csv("data/growth_curve.csv")
@@ -40,8 +39,54 @@ def presenting_bacteria_growth():
     sns.barplot(x = "time", y = "growth_log", data = curve)
 
 
-def growth_bacteria_simulation(ph_val, family):
-    pass
+
+
+# this simultaion is taking in mind, the several changes through
+# the time in range of 0 to 24 hours
+
+def making_growth_simulation():
+
+    # loading datasets.
+    curve = pd.read_csv("data/growth_curve.csv")
+    strep = pd.read_csv("data/streptococcus.csv")
+    lact = pd.read_csv("data/lactobacillus.csv")
+
+
+    # get the real value percent of growth through hours
+    def getting_relevants_values():
+        return [float(sum(curve[curve["time"] == x]["growth_log"].to_numpy())/4) for x in curve["time"].unique()]
+
+    growth = getting_relevants_values()
+    growth = [float("{0:.2f}".format(x)) for x in growth]
+    stack_percent = [float("{0:.2f}".format((growth[x] / growth[x-1]))) for x in range(1, len(growth))]
+
+    # in each parameter of values relevant hours, we make simuilation of growth using its percent
+    def simulate_growing(datacurve: list, process_values: list, dataset_element: list ):
+
+        hours = datacurve["time"].unique()
+        data = {}
+        for x in range(1,len(hours)):
+            data["%s_%s_hours"%(hours[x-1],hours[x])] = [float("{0:.2f}".format(i*process_values[x-1])) for i in dataset_element["ufc/ml"].to_numpy()]
+
+        return data
+
+    # making for each dataset
+    strep_values = simulate_growing(curve, stack_percent, strep)
+    lact_values = simulate_growing(curve, stack_percent, lact)
+
+    # conncat every value to its respective dataset and finally 
+    # conver into csv file the new elemnts in the dataset
+    for x in strep_values:
+        strep[x] = np.array(strep_values[x])
+
+    for x in lact_values:
+        lact[x] = np.array(lact_values[x])
+
+
+    strep.to_csv("data/growth_strep.csv", index= False)
+    lact.to_csv("data/growth_lact.csv", index= False)
+
+
 
 
 def init_process():
