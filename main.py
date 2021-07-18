@@ -17,11 +17,27 @@ ACIDITY = 0.006 # titratble acidity
 
 def presenting_bacteria_growth():
 
-    bacteria = pd.read_csv("data/growth_curve.csv")
+    """bacteria = pd.read_csv("data/growth_curve.csv")
     plt.figure(figsize=(12,7))
     sns.scatterplot(x ="time", y = "growth_log", data = bacteria)
-    plt.show()
+    plt.show()"""
 
+    curve = pd.read_csv("data/growth_curve.csv")
+
+    # presenting the growth and time
+    plt.figure(figsize=(7,7))
+    sns.scatterplot(data= curve)
+
+    # As we can see, the growth was stoped at the 15h from the start
+    # that's mean, that there are a lapse that the bacteria stop their
+    # growth .
+    plt.figure(figsize=(12,7))
+    sns.scatterplot(x = "time", y = "growth_log", data = curve)
+
+
+    # bar plot of growth
+    plt.figure(figsize=(12,7))
+    sns.barplot(x = "time", y = "growth_log", data = curve)
 
 
 def growth_bacteria_simulation(ph_val, family):
