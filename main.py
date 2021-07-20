@@ -13,6 +13,10 @@ MILK_FAT = 0.15 # milk fat percent
 PROTEINS = 0.027 # m/m milk proteins
 ACIDITY = 0.006 # titratble acidity
 
+
+def second_process():
+	pass
+
 def init_process():
 
     reading_file = pd.read_csv("data/milk_grading.csv")
