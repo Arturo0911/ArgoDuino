@@ -29,7 +29,9 @@ class NeuralNet:
                 loss = "mse", metrics = ["mae"])
 
         return model
-
+    
+    def model_training():
+        pass
 
 
 nn = NeuralNet(num_epochs=80)
