@@ -13,7 +13,6 @@ pynvim = "*"
 seaborn = "*"
 flask = "*"
 matplotlib = "*"
-tensorflow = "*"
 scikit-learn = "*"
 
 [dev-packages]

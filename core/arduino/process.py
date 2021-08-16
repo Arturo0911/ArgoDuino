@@ -1,6 +1,6 @@
 from typing import Any, Tuple, Dict
 from serial import Serial
-
+import time
 
 class Arduino:
     """Arduino connection"""
@@ -27,4 +27,7 @@ class Arduino:
             object_data[counter] = data
             counter += 1
             readers -= 1
+            time.sleep(0.05)
+            print("Stack data => {} ".format(stack_data))
+            print("Dictionary data => {}".format(object_data))
         return object_data, stack_data
