@@ -22,11 +22,13 @@ void loop() {
   int counter = 0;
 
   while (counter < 6){
-      Serial.println("Initializing...");
-      Serial.println(analogPin);
+      // Serial.println("Initializing...");
+      //Serial.println(analogPin);
 
       if (analogPin >= 15){
-          Serial.println("pH sensor disconnected!!");
+          // Serial.println("pH sensor disconnected!!");
+          // Serial.println(analogPin);
+          delay(100);
         }
       else{
           for (int i = 0; i < 10; i++){
@@ -53,10 +55,12 @@ void loop() {
         }
 
         float pHVol = (float)avgValue*5.0/1024/6;
-        float pHValue = -5.70*pHVol + 21.34;
+        float pHValue = -5.70*pHVol + 14.34;
 
-        Serial.print("phValue => ");
+        // Serial.print("phValue => ");
+        // Serial.print("ph: ");
         Serial.println(pHValue);
+        //delay(5000);
          
     }
 
